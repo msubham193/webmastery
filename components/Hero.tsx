@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Play, MousePointer2, Code2, Sparkles } from 'lucide-react';
+import { ArrowRight, Play, Code2, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
