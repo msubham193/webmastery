@@ -2,6 +2,13 @@ import React from 'react';
 import { Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
 
+const SOCIAL_LINKS = [
+  { icon: Github, href: 'https://github.com/msubham193' },
+  { icon: Linkedin, href: '#' },
+  { icon: Twitter, href: '#' },
+  { icon: Instagram, href: '#' }
+];
+
 const Footer: React.FC = () => {
   return (
     <footer className="bg-black/20 text-white py-16 border-t border-white/10 backdrop-blur-sm relative z-10">
@@ -29,9 +36,15 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="flex gap-4">
-            {[Github, Linkedin, Twitter, Instagram].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all hover:border-indigo-500">
-                    <Icon size={18} />
+            {SOCIAL_LINKS.map((item, i) => (
+                <a 
+                  key={i} 
+                  href={item.href} 
+                  target={item.href.startsWith('http') ? "_blank" : "_self"}
+                  rel={item.href.startsWith('http') ? "noopener noreferrer" : ""}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all hover:border-indigo-500"
+                >
+                    <item.icon size={18} />
                 </a>
             ))}
           </div>

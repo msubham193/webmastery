@@ -64,7 +64,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-white">Location</h4>
-                  <p className="text-slate-400">San Francisco, CA (Remote Worldwide)</p>
+                  <p className="text-slate-400">Bhubaneswar, Odisha, India</p>
                 </div>
               </div>
             </div>
