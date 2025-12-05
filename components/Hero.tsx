@@ -1,8 +1,10 @@
-import React from 'react';
-import { ArrowRight, Play, Code2, Sparkles } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { ArrowRight, Play, Code2, Sparkles, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Hero: React.FC = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
     <section className="relative min-h-screen bg-slate-950 flex flex-col items-center justify-center overflow-hidden pt-24 pb-12 md:pt-20 md:pb-0">
       
@@ -68,12 +70,12 @@ const Hero: React.FC = () => {
           >
             View Projects <ArrowRight size={18} />
           </a>
-          <a 
-            href="#contact"
-            className="px-6 py-3.5 md:px-8 md:py-4 rounded-full bg-slate-900/50 text-white font-bold border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all flex items-center justify-center gap-2 text-sm md:text-base"
+          <button 
+            onClick={() => setIsVideoOpen(true)}
+            className="px-6 py-3.5 md:px-8 md:py-4 rounded-full bg-slate-900/50 text-white font-bold border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all flex items-center justify-center gap-2 text-sm md:text-base cursor-pointer"
           >
             <Play size={16} fill="currentColor" /> Showreel
-          </a>
+          </button>
         </motion.div>
 
         {/* Floating Glass Card (Bottom) */}
@@ -115,6 +117,44 @@ const Hero: React.FC = () => {
         </motion.div>
 
       </div>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {isVideoOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-xl"
+            onClick={() => setIsVideoOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="relative w-full max-w-5xl aspect-video bg-black rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-indigo-500/20"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setIsVideoOpen(false)}
+                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/50 text-white hover:bg-white hover:text-black transition-all border border-white/10 backdrop-blur-md"
+              >
+                <X size={24} />
+              </button>
+              
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                controls
+                src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
