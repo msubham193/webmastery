@@ -147,7 +147,7 @@ const Hero: React.FC = () => {
                 className="w-full h-full object-cover"
                 autoPlay
                 controls
-                src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
+                src="https://firebasestorage.googleapis.com/v0/b/imageinfirebase-8d1a1.appspot.com/o/Digital_Agency_Video_Generation_Request.mp4?alt=media&token=e75ca1f7-d3f1-4ca8-85a2-2335c236039b"
               >
                 Your browser does not support the video tag.
               </video>
